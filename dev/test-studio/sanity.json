@@ -3,13 +3,14 @@
   "project": {
     "name": "Test studio"
   },
+  "language": "fr",
   "__experimental_spaces": [
     {
       "name": "test",
       "title": "Test (public)",
       "default": true,
       "api": {
-        "dataset": "test"
+        "dataset": "production"
       }
     },
     {
@@ -21,8 +22,8 @@
     }
   ],
   "api": {
-    "projectId": "ppsg7ml5",
-    "dataset": "test"
+    "projectId": "3we6ckrj",
+    "dataset": "production"
   },
   "plugins": [
     "@sanity/base",

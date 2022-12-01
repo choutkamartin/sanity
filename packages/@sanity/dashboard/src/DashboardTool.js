@@ -23,7 +23,7 @@ const DashboardIcon = () => (
 )
 
 export default {
-  title: 'Dashboard',
+  title: 'dashboard',
   name: 'dashboard',
   icon: DashboardIcon,
   component: Dashboard,

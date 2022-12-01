@@ -4,6 +4,7 @@ import {Button, Stack} from '@sanity/ui'
 import {PlugIcon} from '@sanity/icons'
 import {Tool} from '../../types'
 import {useDefaultLayoutRouter} from '../../useDefaultLayoutRouter'
+import {useTranslation} from 'react-i18next'
 
 interface Props {
   activeToolName: string
@@ -15,12 +16,12 @@ interface Props {
 export default function ToolMenu(props: Props) {
   const {activeToolName, isVisible, onSwitchTool, tools} = props
   const router = useDefaultLayoutRouter()
-
+  const {t, i18n} = useTranslation()
   return useMemo(
     () => (
       <Stack as="ul" space={[1, 2]}>
         {tools.map((tool) => {
-          const title = tool.title || tool.name || undefined
+          const title = t(tool.title) || tool.name || undefined
 
           const LinkComponent = (linkProps) => {
             return (

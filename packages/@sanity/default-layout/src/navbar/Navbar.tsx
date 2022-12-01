@@ -14,6 +14,7 @@ import styled from 'styled-components'
 import {getNewDocumentOptions, TemplatePermissionsResult} from '@sanity/base/_internal'
 import {HAS_SPACES} from '../util/spaces'
 import {DatasetSelect} from '../datasetSelect'
+import {LanguageSelect} from '../languageSelect'
 import {useDefaultLayoutRouter} from '../useDefaultLayoutRouter'
 import {tools} from '../config'
 import {versionedClient} from '../versionedClient'
@@ -131,6 +132,7 @@ export const Navbar = memo(function Navbar(props: NavbarProps) {
       brandingCenter: mediaIndex <= 1,
       changelog: mediaIndex > 1,
       collapsedPresenceMenu: mediaIndex <= 1,
+      language: true,
       hints: mediaIndex > 1 && sidecar && sidecar.isSidecarEnabled && sidecar.isSidecarEnabled(),
       loginStatus: mediaIndex > 1,
       searchFullscreen: mediaIndex <= 1,
@@ -268,6 +270,12 @@ export const Navbar = memo(function Navbar(props: NavbarProps) {
 
           {shouldRender.hints && (
             <Box marginRight={1}>{sidecar && createElement(sidecar.SidecarToggleButton)}</Box>
+          )}
+
+          {shouldRender.language && (
+            <Flex marginRight={2}>
+              <LanguageSelect />
+            </Flex>
           )}
 
           <LegacyLayerProvider zOffset="navbarPopover">

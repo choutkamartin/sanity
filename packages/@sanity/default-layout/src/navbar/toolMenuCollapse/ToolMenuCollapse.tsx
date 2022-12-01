@@ -5,6 +5,7 @@ import {CollapseMenuButton, CollapseMenu, useRovingFocus} from '@sanity/base/com
 import {MenuButtonProps, TooltipProps} from '@sanity/ui'
 import {Tool} from '../../types'
 import {useDefaultLayoutRouter} from '../../useDefaultLayoutRouter'
+import {useTranslation} from 'react-i18next'
 
 const BUTTON_TOOLTIP_PROPS: TooltipProps = {scheme: 'light'}
 const MENU_BUTTON_PROPS: Omit<MenuButtonProps, 'id' | 'button'> = {
@@ -14,7 +15,7 @@ const MENU_BUTTON_PROPS: Omit<MenuButtonProps, 'id' | 'button'> = {
 export function ToolMenuCollapse({tools}: {tools: Tool[]}) {
   const router = useDefaultLayoutRouter()
   const [rootElement, setRootElement] = useState<HTMLDivElement | null>(null)
-
+  const {t} = useTranslation()
   useRovingFocus({
     rootElement: rootElement,
   })
@@ -23,7 +24,7 @@ export function ToolMenuCollapse({tools}: {tools: Tool[]}) {
     () => (
       <CollapseMenu menuButtonProps={MENU_BUTTON_PROPS} gap={1} ref={setRootElement}>
         {tools.map((tool) => {
-          const title = tool.title || tool.name
+          const title = t(tool.title) || tool.name
 
           const Link = forwardRef(function Link(props: any, ref: any) {
             return (
@@ -56,6 +57,6 @@ export function ToolMenuCollapse({tools}: {tools: Tool[]}) {
         })}
       </CollapseMenu>
     ),
-    [router.state, tools]
+    [router.state, tools, t]
   )
 }

@@ -5,6 +5,7 @@ declare module 'config:sanity' {
       name?: string
       basePath?: string
     }
+    language: string;
     api: {
       projectId: string
       dataset: string

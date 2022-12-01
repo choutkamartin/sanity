@@ -19,6 +19,8 @@ import {ChevronDownIcon, CogIcon, LeaveIcon} from '@sanity/icons'
 import styled from 'styled-components'
 import {CurrentUser} from '@sanity/types/src'
 import {LoginProviderLogo} from './LoginProviderLogo'
+import i18next from '../../i18next'
+import {useTranslation} from 'react-i18next'
 
 interface LoginStatusProps {
   onLogout: () => void
@@ -62,6 +64,7 @@ const getProviderTitle = (provider: string) => {
 }
 
 export function LoginStatus(props: LoginStatusProps) {
+  const {t, i18n} = useTranslation()
   const {currentUser, onLogout, projectId} = props
 
   const providerTitle = getProviderTitle(currentUser.provider)
@@ -121,7 +124,7 @@ export function LoginStatus(props: LoginStatusProps) {
             as="a"
             href={`https://sanity.io/manage/project/${projectId}`}
             target="_blank"
-            text="Manage project"
+            text={t('Manage project')}
             icon={CogIcon}
           />
           <MenuDivider />
